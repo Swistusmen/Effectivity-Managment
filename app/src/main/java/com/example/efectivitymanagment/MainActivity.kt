@@ -9,16 +9,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val add= findViewById<Button>(R.id.add_button)
+        val eisenhowerButton= findViewById<Button>(R.id.eisenhowerButton)
 
-        add.setOnClickListener{
-            System.out.println("I was clicked")
-            openSecondLayout();
+        eisenhowerButton.setOnClickListener{
+            openEiseinhowrLayout();
         }
 
     }
 
-    private fun openSecondLayout() {
+    private fun openEiseinhowrLayout() {
         setContentView(R.layout.eisenhower_matrix)
     }
 

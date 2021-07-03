@@ -28,22 +28,42 @@
         android:rowCount="4">
 
         <Button
-            android:id="@+id/EisenhowerButton"
+            android:id="@+id/eisenhowerButton"
             android:layout_row="1"
             android:layout_column="0"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:text="Eisenhower Matrix"
-            android:layout_margin="30dp" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"/>
         <Button
-            android:id="@+id/ToDoButton"
+            android:id="@+id/toDoButton"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:text="ToDo List"
-            android:layout_margin="30dp"
-            android:/>
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="40dp"/>
+        <Button
+            android:id="@+id/calendarButton"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="Calendar"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/goalsButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="40dp"
+            android:text="Goals" />
     </GridLayout>
 
 
