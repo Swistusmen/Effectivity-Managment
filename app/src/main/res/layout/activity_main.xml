@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/yellow">
+    android:background="@color/white">
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -23,7 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
-        android:background="color/yellow"
         android:columnCount="2"
         android:rowCount="4">
 

@@ -10,16 +10,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val eisenhowerButton= findViewById<Button>(R.id.eisenhowerButton)
+        val eisBackToMain=findViewById<Button>(R.id.eisBackToMain)
 
         eisenhowerButton.setOnClickListener{
-            openEiseinhowrLayout();
+            openEiseinhowerLayout()
+        }
+
+        eisBackToMain.setOnClickListener{
+            openMainLayout()
         }
 
     }
 
-    private fun openEiseinhowrLayout() {
+    private fun openEiseinhowerLayout() {
         setContentView(R.layout.eisenhower_matrix)
     }
 
+    private fun openMainLayout(){
+        setContentView(R.layout.activity_main)
+    }
 
 }

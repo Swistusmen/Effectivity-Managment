@@ -16,21 +16,60 @@
         android:textColor="@color/black"
         android:textSize="26dp"
         android:background="@color/teal_700"/>
-    <Button
-        android:id="@+id/eisBackToMain"
-        android:layout_width="wrap_content"
-        android:layout_below="@id/textView"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:layout_margin="10dp"
-        android:layout_marginLeft="15dp"/>
+        android:id="@+id/eisButtons"
+        android:layout_below="@id/textView"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/eisBackToMain"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="15dp"/>
+        <Button
+            android:id="@+id/eisAdd"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="15dp"/>
+        <Button
+            android:id="@+id/eisDel"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eisTextEdit"/>
+        </LinearLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/eisButtons">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/eisBackToMain"
         android:orientation="horizontal"
-        android:background="@color/yellow"
         android:gravity="center_horizontal"
         android:id="@+id/eisGridOne">
         <LinearLayout
@@ -68,48 +107,33 @@
                 />
         </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/eisGridOne"
         android:orientation="horizontal"
         android:background="@color/white"
-        android:gravity="center_horizontal"
         android:id="@+id/eisGridTwo">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="206dp"
+                android:layout_height="220dp"
                 android:choiceMode="multipleChoice"
                 android:id="@+id/UandVList"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="206dp"
+                android:layout_height="220dp"
                 android:choiceMode="multipleChoice"
                 android:id="@+id/NotUandVList"/>
-        </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/eisGridTwo"
         android:orientation="horizontal"
-        android:background="@color/yellow"
         android:gravity="center_horizontal"
         android:id="@+id/eisGridThree">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="206dp"
                 android:layout_height="match_parent"
                 android:id="@+id/eisUandNVText"
                 android:text="Urgent and  not valid"
@@ -121,10 +145,6 @@
                 android:paddingTop="13dp"
                 android:paddingBottom="30dp"
                 android:gravity="center"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/eisNUandNVText"
                 android:layout_width="match_parent"
@@ -138,10 +158,26 @@
                 android:paddingBottom="10dp"
                 android:gravity="center"
                 />
-        </LinearLayout>
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/eisGridThree"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:id="@+id/eisGridFour">
+            <ListView
+                android:layout_width="206dp"
+                android:layout_height="220dp"
+                android:choiceMode="multipleChoice"
+                android:id="@+id/UandNVList"/>
+            <ListView
+                android:layout_width="206dp"
+                android:layout_height="220dp"
+                android:choiceMode="multipleChoice"
+                android:id="@+id/NotUandNVList"/>
+        </LinearLayout>
 
-
-
+    </LinearLayout>
 
 </RelativeLayout>
