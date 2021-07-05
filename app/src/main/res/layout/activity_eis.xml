@@ -25,30 +25,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/eisBackToMain"
-            android:layout_width="wrap_content"
-            android:layout_below="@id/textView"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:layout_margin="10dp"
-            android:layout_marginLeft="15dp"/>
-        <Button
-            android:id="@+id/eisAdd"
-            android:layout_width="wrap_content"
-            android:layout_below="@id/textView"
-            android:layout_height="wrap_content"
-            android:text="Add"
-            android:layout_margin="10dp"
-            android:layout_marginLeft="15dp"/>
-        <Button
-            android:id="@+id/eisDel"
-            android:layout_width="wrap_content"
-            android:layout_below="@id/textView"
-            android:layout_height="wrap_content"
-            android:text="Delete"
-            android:layout_margin="10dp"
-            android:layout_marginLeft="15dp"/>
+            <Button
+                android:id="@+id/eisBackToMain"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/textView"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="15dp"/>
+            <Button
+                android:id="@+id/eisAdd"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/textView"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="15dp"/>
+            <Button
+                android:id="@+id/eisDel"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/textView"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="15dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,55 +65,55 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/eisButtons">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/eisBackToMain"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:id="@+id/eisGridOne">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/eisUandVText"
-                android:text="Urgent and valid"
-                android:background="@color/teal_700"
-                android:textSize="20dp"
-                android:layout_gravity="center"
-                android:paddingRight="30dp"
-                android:paddingLeft="30dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="30dp"
-                android:gravity="center"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/eisBackToMain"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:id="@+id/eisGridOne">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/eisUandVText"
+                    android:text="Urgent and valid"
+                    android:background="@color/teal_700"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:paddingRight="30dp"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="30dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/eisNUandVText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/teal_700"
+                    android:text="Not Urgent and valid"
+                    android:textSize="20dp"
+                    android:paddingRight="30dp"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/eisNUandVText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/teal_700"
-                android:text="Not Urgent and valid"
-                android:textSize="20dp"
-                android:paddingRight="30dp"
-                android:paddingLeft="30dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:gravity="center"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/eisGridOne"
-        android:orientation="horizontal"
-        android:background="@color/white"
-        android:id="@+id/eisGridTwo">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/eisGridOne"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:id="@+id/eisGridTwo">
             <ListView
                 android:layout_width="206dp"
                 android:layout_height="220dp"
@@ -124,14 +124,14 @@
                 android:layout_height="220dp"
                 android:choiceMode="multipleChoice"
                 android:id="@+id/NotUandVList"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/eisGridTwo"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:id="@+id/eisGridThree">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/eisGridTwo"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:id="@+id/eisGridThree">
             <TextView
                 android:layout_width="206dp"
                 android:layout_height="match_parent"
@@ -158,7 +158,7 @@
                 android:paddingBottom="10dp"
                 android:gravity="center"
                 />
-    </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
