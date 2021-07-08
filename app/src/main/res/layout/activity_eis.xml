@@ -21,18 +21,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/eisButtons"
         android:layout_below="@id/textView"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/eisBackToMain"
-                android:layout_width="wrap_content"
-                android:layout_below="@id/textView"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:layout_margin="10dp"
-                android:layout_marginLeft="15dp"/>
+        android:orientation="horizontal">
             <Button
                 android:id="@+id/eisAdd"
                 android:layout_width="wrap_content"
@@ -49,15 +38,11 @@
                 android:text="Delete"
                 android:layout_margin="10dp"
                 android:layout_marginLeft="15dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
             <EditText
+                android:id="@+id/eisTextEdit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/eisTextEdit"/>
-        </LinearLayout>
+                android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,7 +53,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/eisBackToMain"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:id="@+id/eisGridOne">
