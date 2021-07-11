@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EfectivityManagment">
-        <activity android:name=".toDoList"></activity>
+        <activity android:name=".eisFullView"></activity>
+        <activity android:name=".toDoList" />
         <activity android:name=".goals" />
         <activity android:name=".eis" />
         <activity android:name=".MainActivity">
