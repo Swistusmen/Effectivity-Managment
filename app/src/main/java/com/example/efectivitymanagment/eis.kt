@@ -51,11 +51,6 @@ class eis : AppCompatActivity() {
 
         val fullMatrixButton=findViewById<Button>(R.id.fullMatrixButton)
 
-        fullMatrixButton.setOnClickListener {
-            val intent=Intent(this, eisFullView::class.java)
-            startActivity(intent)
-        }
-
        for((k,v) in TextLabels){
            v.setOnClickListener{
                v.text="clicked"
@@ -176,6 +171,16 @@ class eis : AppCompatActivity() {
             }
         }
 
+        fullMatrixButton.setOnClickListener {
+            val intent=Intent(this, eisFullView::class.java)
+            val bundle=Bundle()
+            bundle.putStringArrayList("uv",uvContainer)
+            bundle.putStringArrayList("nuv",nuvContainer)
+            bundle.putStringArrayList("unv",unvContainer)
+            bundle.putStringArrayList("nunv",nunvContainer)
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
 
         }
 
