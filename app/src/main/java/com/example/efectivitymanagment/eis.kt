@@ -1,17 +1,28 @@
 package com.example.efectivitymanagment
 
+import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.opengl.Visibility
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.SparseBooleanArray
 import android.view.View
 import android.widget.*
-import androidx.core.view.forEach
-import org.w3c.dom.Text
+import androidx.appcompat.app.AppCompatActivity
+import java.io.*
 
 class eis : AppCompatActivity() {
+    var filename: String="EisenhowerMaritx"
+    var uvContainer= arrayListOf<String>()
+    var unvContainer= arrayListOf<String>()
+    var nuvContainer= arrayListOf<String>()
+    var nunvContainer= arrayListOf<String>()
+    var Containers=mapOf<String,ArrayList<String>>(
+        "uv" to uvContainer,
+        "unv" to unvContainer,
+        "nuv" to nuvContainer,
+        "nunv" to nunvContainer
+    )
+    var lineSeparator = System.getProperty("line.separator")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eis)
@@ -107,25 +118,14 @@ class eis : AppCompatActivity() {
                 }
             }
         }
-        
-        var uvContainer= arrayListOf<String>()
+
         var uvAdapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,uvContainer)
 
-        var unvContainer= arrayListOf<String>()
         var unvAdapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,unvContainer)
 
-        var nuvContainer= arrayListOf<String>()
         var nuvAdapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,nuvContainer)
 
-        var nunvContainer= arrayListOf<String>()
         var nunvAdapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,nunvContainer)
-
-        var Containers=mapOf<String,ArrayList<String>>(
-            "uv" to uvContainer,
-            "unv" to unvContainer,
-            "nuv" to nuvContainer,
-            "nunv" to nunvContainer
-        )
 
         var Adapters=mapOf<String,ArrayAdapter<String>>(
             "uv" to uvAdapter,
@@ -133,7 +133,6 @@ class eis : AppCompatActivity() {
             "nuv" to nuvAdapter,
             "nunv" to nunvAdapter,
         )
-
 
         for((k,v)in AddButtons){
             v.setOnClickListener {
@@ -182,7 +181,98 @@ class eis : AppCompatActivity() {
             startActivity(intent)
         }
 
+        ReadInitialData()
+        val adapter=Adapters["uv"]
+        val listView=Lists["uv"]
+        if(adapter!=null&&listView!=null) {
+            listView.adapter = adapter
+            adapter.notifyDataSetChanged()
         }
 
+        val adapter1=Adapters["unv"]
+        val listView1=Lists["unv"]
+        if(adapter1!=null&&listView1!=null) {
+            listView1.adapter = adapter1
+            adapter1.notifyDataSetChanged()
+        }
 
-}
+        val adapter2=Adapters["nuv"]
+        val listView2=Lists["nuv"]
+        if(adapter2!=null&&listView2!=null) {
+            listView2.adapter = adapter2
+            adapter2.notifyDataSetChanged()
+        }
+
+        val adapter3=Adapters["nunv"]
+        val listView3=Lists["nunv"]
+        if(adapter3!=null&&listView3!=null) {
+            listView3.adapter = adapter3
+            adapter3.notifyDataSetChanged()
+        }
+
+        }
+
+    override fun onPause() {
+        super.onPause()
+
+        var path=this.getExternalFilesDir(null)
+        var file:File= File(path,filename)
+        if(!file.exists()){
+            file.createNewFile()
+        }else{
+            file.delete()
+            file.createNewFile()
+        }
+
+        var fileNameOutput: FileOutputStream?= null
+        fileNameOutput = openFileOutput(filename, Context.MODE_PRIVATE)
+
+        for((k,v) in Containers){
+            var name=k
+            fileNameOutput.write((name).toByteArray())
+            fileNameOutput.write(lineSeparator.toByteArray())
+            for(i in v){
+                fileNameOutput.write((i).toByteArray())
+                fileNameOutput.write(lineSeparator.toByteArray())
+            }
+        }
+        fileNameOutput.flush()
+        fileNameOutput.close()
+    }
+
+    fun ReadInitialData(){
+        var path=this.getExternalFilesDir(null)
+        var file:File=File(path,filename)
+        var fileNameInput: FileInputStream?= null
+        var myList= arrayListOf<String>()
+        if(file.exists()) {
+            fileNameInput = openFileInput(filename)
+            var reader: InputStreamReader = InputStreamReader(fileNameInput)
+            var bufferedReader: BufferedReader = BufferedReader(reader)
+            var builder: StringBuilder = StringBuilder()
+            var text: String? = null
+            while ({ text = bufferedReader.readLine();text }() != null) {
+                builder.append(text)
+                myList.add(builder.toString())
+                builder.clear()
+            }
+        }
+
+        var shortcuts=Containers.keys
+        var currentShortcut:String=""
+        for(e in myList){
+            if(e in shortcuts){
+                currentShortcut=e
+            }
+            else if(currentShortcut=="uv")
+                uvContainer.add(e)
+            else if(currentShortcut=="nunv")
+                nunvContainer.add(e)
+            else if(currentShortcut=="nuv")
+                nuvContainer.add(e)
+            else if(currentShortcut=="unv")
+                unvContainer.add(e)
+            }
+
+        }
+    }
