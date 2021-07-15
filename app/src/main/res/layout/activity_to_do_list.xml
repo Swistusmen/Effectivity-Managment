@@ -53,5 +53,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ToDoButtons"
         android:id="@+id/todoList"
+        android:choiceMode="multipleChoice"
         android:background="@color/purple_200"/>
 </RelativeLayout>
