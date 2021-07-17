@@ -52,13 +52,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/goalsText"
-            android:textColor="@color/purple_200"/>
+            android:id="@+id/goalsTextEdit"
+            android:textColor="@color/purple_200" />
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/purple_200"
             android:layout_margin="10dp"
-            android:choiceMode="singleChoice"/>
+            android:choiceMode="singleChoice"
+            android:id="@+id/goalsList"/>
     </LinearLayout>
 </RelativeLayout>
