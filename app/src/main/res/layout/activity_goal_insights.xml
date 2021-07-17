@@ -7,12 +7,12 @@
     tools:context=".MainActivity"
     android:background="@color/white">
     <TextView
-        android:id="@+id/goalsTitle"
+        android:id="@+id/giTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Goals"
+        android:text="Goal Insight"
         android:textColor="@color/black"
         android:textSize="26dp"
         android:layout_row="1"
@@ -21,44 +21,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mainGoalsLayout"
-        android:layout_below="@id/goalsTitle"
+        android:layout_below="@id/giTitle"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/goalsButtons"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Here put your description"
+                android:textColor="@color/black"
+                and
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create"
-                android:layout_margin="10dp"
-                android:id="@+id/goalsCreate"/>
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="4dp"
+                android:text="Create Step"
+                android:id="@+id/giCreate"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Enter goal"
-                android:id="@+id/goalsEnter"/>
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="4dp"
+                android:text="Delete Step"
+                android:id="@+id/giCDel"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Delete"
-                android:id="@+id/goalsDelete"/>
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="4dp"
+                android:text="step done"
+                android:id="@+id/giEnter"/>
         </LinearLayout>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/goalsText"
-            android:textColor="@color/purple_200"/>
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/purple_200"
-            android:layout_margin="10dp"
-            android:choiceMode="singleChoice"/>
+            android:layout_marginTop="5dp"
+            android:textColor="@color/purple_200"
+            android:id="@+id/giStep"/>
     </LinearLayout>
 </RelativeLayout>
