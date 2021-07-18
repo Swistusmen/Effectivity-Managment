@@ -21,10 +21,13 @@ class goalInsights : AppCompatActivity() {
         var input=findViewById<EditText>(R.id.giStep)
         var list=findViewById<ListView>(R.id.giStepsList)
 
-        if(savedInstanceState==null)
-            return
 
-        var parentGoal: String?=intent.getStringExtra("Goal")
+
+
+        var bundle=intent.extras
+        if(bundle!=null)
+        var parentGoal=bundle.getString("Goal")
+
         title.text=parentGoal
 
         var adapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,Steps)

@@ -48,7 +48,9 @@ class goals : AppCompatActivity() {
                 var GoalToOpen:String=Goals[choosedAction]
                 if(CheckIfGoalExists(GoalToOpen)){
                 var intent=Intent(this,goalInsights::class.java)
-                intent.putExtra("Goal",GoalToOpen)
+                    var bundle=Bundle()
+                    bundle.putString("Goal",GoalToOpen)
+                intent.putExtras(bundle)
                 startActivity(intent)
                 }
             }
