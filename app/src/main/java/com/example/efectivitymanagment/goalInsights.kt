@@ -1,5 +1,6 @@
 package com.example.efectivitymanagment
 
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -23,11 +24,16 @@ class goalInsights : AppCompatActivity() {
         if(savedInstanceState==null)
             return
 
-        var bundle=intent
-        var parentGoal: String?=bundle.getStringExtra("Goal")
+        var parentGoal: String?=intent.getStringExtra("Goal")
         title.text=parentGoal
 
         var adapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,Steps)
+
+        if(parentGoal!=null) {
+            ReadStepsFromDB(parentGoal)
+            list.adapter=adapter
+            adapter.notifyDataSetChanged()
+        }
 
         create.setOnClickListener {
             var newStep=input.text.toString()
@@ -39,6 +45,14 @@ class goalInsights : AppCompatActivity() {
                 dbHandler.AddNewStep(newStep,parentGoal)
             }
         }
-
     }
+
+    private fun ReadStepsFromDB(parent: String){
+        var ListOfSteps=dbHandler.readGoalSteps(parent)
+        for(i in ListOfSteps){
+            Steps.add(i.desc)
+        }
+    }
+
+
 }

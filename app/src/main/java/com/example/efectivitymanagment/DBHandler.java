@@ -2,10 +2,13 @@ package com.example.efectivitymanagment;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
     private static final String DB_Name="GoalsSteps";
@@ -40,6 +43,22 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.insert(TableName,null,values);
         db.close();
+    }
+
+    public ArrayList<Step> readGoalSteps(String parent){
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("Select id, Goal, Description, IsDone from "+TableName+ " where Goal="+ parent,null);
+
+        ArrayList<Step> stepList= new ArrayList<Step>();
+
+        if(cursor.moveToFirst()){
+            do{
+                stepList.add(new Step(cursor.getString(1),
+                        cursor.getString(3),cursor.getString(2),cursor.getString(4)));
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return stepList;
     }
 
     @Override
