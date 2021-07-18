@@ -218,6 +218,5 @@
                 android:padding="0dp"
                 android:layout_margin="0dp"
                 android:text="Full View"/>
-
         </LinearLayout>
 </RelativeLayout>

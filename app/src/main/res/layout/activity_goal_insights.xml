@@ -40,7 +40,8 @@
                 android:text="Here put your description"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:id="@+id/giDesc"/>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
@@ -67,14 +68,14 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="4dp"
                 android:text="Delete Step"
-                android:id="@+id/giCDel"/>
+                android:id="@+id/giDel"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="4dp"
                 android:text="step done"
-                android:id="@+id/giEnter"/>
+                android:id="@+id/giDone"/>
         </LinearLayout>
         <EditText
             android:layout_width="match_parent"
@@ -88,6 +89,5 @@
             android:id="@+id/giStepsList"
             android:background="@color/purple_200"
             android:layout_margin="10dp"/>
-
     </LinearLayout>
 </RelativeLayout>
