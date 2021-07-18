@@ -21,12 +21,11 @@ class goalInsights : AppCompatActivity() {
         var input=findViewById<EditText>(R.id.giStep)
         var list=findViewById<ListView>(R.id.giStepsList)
 
-
-
-
-        var bundle=intent.extras
-        if(bundle!=null)
-        var parentGoal=bundle.getString("Goal")
+        var parentGoal:String?=null
+        if(intent.extras!=null) {
+            var bundle=intent.extras
+            val parentGoal = bundle.getString("Goal")
+        }
 
         title.text=parentGoal
 
