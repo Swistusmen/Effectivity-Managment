@@ -22,9 +22,11 @@ class goalInsights : AppCompatActivity() {
         var list=findViewById<ListView>(R.id.giStepsList)
 
         var parentGoal:String?=null
-        if(intent.extras!=null) {
-            var bundle=intent.extras
-            val parentGoal = bundle.getString("Goal")
+        var bundle=intent.extras
+        if(bundle!=null) {
+            parentGoal = bundle.getString("Goal")
+            if(parentGoal==null)
+                parentGoal="Dupa"
         }
 
         title.text=parentGoal
@@ -39,13 +41,13 @@ class goalInsights : AppCompatActivity() {
 
         create.setOnClickListener {
             var newStep=input.text.toString()
-            input.text.clear()
             if(newStep!=""&&newStep!=null){
                 Steps.add(newStep)
                 list.adapter=adapter
                 adapter.notifyDataSetChanged()
                 dbHandler.AddNewStep(newStep,parentGoal)
             }
+            input.text.clear()
         }
     }
 

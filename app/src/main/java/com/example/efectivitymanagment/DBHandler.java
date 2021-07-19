@@ -30,16 +30,16 @@ public class DBHandler extends SQLiteOpenHelper {
         String query="CREATE TABLE "+TableName+ " ("+
                 FirstColumn+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 SecondColumn+ " TEXT, "+ThirdColumn+" TEXT, "
-                + FourthColumn+ " BOOLEAN)";
+                + FourthColumn+ " TEXT)";
         db.execSQL(query);
     }
 
     public void AddNewStep(String description, String parent){
         SQLiteDatabase db=getWritableDatabase();
         ContentValues values= new ContentValues();
-        values.put(SecondColumn,description);
-        values.put(ThirdColumn,parent);
-        values.put(FourthColumn,false);
+        values.put(ThirdColumn,description);
+        values.put(SecondColumn,parent);
+        values.put(FourthColumn,"0");
 
         db.insert(TableName,null,values);
         db.close();
@@ -47,15 +47,18 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public ArrayList<Step> readGoalSteps(String parent){
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("Select id, Goal, Description, IsDone from "+TableName+ " where Goal="+ parent,null);
+        Cursor cursor=db.rawQuery("Select * from "+TableName+ " where Goal=\""+ parent+"\";",null);
 
         ArrayList<Step> stepList= new ArrayList<Step>();
 
         if(cursor.moveToFirst()){
             do{
-                stepList.add(new Step(cursor.getString(1),
-                        cursor.getString(3),cursor.getString(2),cursor.getString(4)));
-            }while(cursor.moveToNext());
+                String a=cursor.getString(1);
+                String a1=cursor.getString(2);
+                String a2=cursor.getString(3);
+                stepList.add(new Step(cursor.getString(2),
+                        cursor.getString(1),cursor.getString(3)));
+            }while(cursor.moveToNext()); //tutaj
         }
         cursor.close();
         return stepList;
