@@ -64,6 +64,12 @@ public class DBHandler extends SQLiteOpenHelper {
         return stepList;
     }
 
+    public void deleteGoalSteps(String goal){
+        SQLiteDatabase db=this.getWritableDatabase();
+        String query="DELETE FROM "+TableName+" WHERE Goal="+goal;
+        db.execSQL(query);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

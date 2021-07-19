@@ -14,6 +14,7 @@ import java.lang.StringBuilder
 
 class goals : AppCompatActivity() {
     var Goals= arrayListOf<String>()
+    var dbHandler: DBHandler=DBHandler(this)
     var fileName= "Goals"
     var SQLDataBase="GoalsSteps"
 
@@ -61,8 +62,10 @@ class goals : AppCompatActivity() {
             if(adapter!=null&&list!=null){
                 var choosenGoal:Int=list.checkedItemPosition
                 if(choosenGoal!=null) {
+                    val goal=Goals.get(choosenGoal)
                     adapter.remove(Goals.get(choosenGoal))
                     adapter.notifyDataSetChanged()
+                    dbHandler.deleteGoalSteps(goal)
                 }
             }
         }
