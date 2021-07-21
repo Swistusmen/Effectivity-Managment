@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
@@ -66,8 +68,35 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public void deleteGoalSteps(String goal){
         SQLiteDatabase db=this.getWritableDatabase();
-        String query="DELETE FROM "+TableName+" WHERE Goal="+goal;
-        db.execSQL(query);
+        db.delete(TableName,"Goal=?",new String[]{goal});
+        db.close();
+    }
+
+    public void deleteStep(String step){
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.delete(TableName, "Description=?",new String[]{step});
+        db.close();
+    }
+
+   public void markStepAsDone(String step,String goal){
+
+       SQLiteDatabase write=this.getWritableDatabase();
+       SQLiteDatabase db=this.getReadableDatabase();
+       Cursor cursor=db.rawQuery("Select * from "+TableName+ " where( Goal=\""+ goal+
+               "\" AND Description=\"" +step+"\");",null);
+
+       if(cursor.moveToFirst()){
+           do{
+               ContentValues values=new ContentValues();
+               values.put(ThirdColumn,cursor.getString(2));
+               values.put(SecondColumn,cursor.getString(1));
+               values.put(FourthColumn,"1");
+               values.put(FirstColumn,cursor.getString(0));
+               write.update(TableName,values,"Description=?", new String[]{step});
+           }while(cursor.moveToNext());
+       }
+       write.close();
+       cursor.close();
     }
 
     @Override

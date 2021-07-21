@@ -3,6 +3,7 @@ package com.example.efectivitymanagment
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.SparseBooleanArray
 import android.widget.*
 
 class goalInsights : AppCompatActivity() {
@@ -48,6 +49,38 @@ class goalInsights : AppCompatActivity() {
                 dbHandler.AddNewStep(newStep,parentGoal)
             }
             input.text.clear()
+        }
+
+        delete.setOnClickListener {
+            val count=list.count
+            val position: SparseBooleanArray =list.checkedItemPositions
+            var item=count-1
+            while(item>=0){
+                if(position.get(item)){
+                    val goal=Steps.get(item)
+                    adapter.remove(Steps.get(item))
+                    dbHandler.deleteStep(goal)
+                }
+                item--
+            }
+            position.clear()
+            adapter.notifyDataSetChanged()
+        }
+
+        done.setOnClickListener {
+            val count=list.count
+            val position: SparseBooleanArray =list.checkedItemPositions
+            var item=count-1
+            while(item>=0){
+                if(position.get(item)){
+                    var step=Steps.get(item)
+                    dbHandler.markStepAsDone(step,parentGoal)
+                    adapter.remove(Steps.get(item))
+                }
+                item--
+            }
+            position.clear()
+            adapter.notifyDataSetChanged()
         }
     }
 

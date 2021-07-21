@@ -58,7 +58,6 @@ class goals : AppCompatActivity() {
         }
 
         deleteButton.setOnClickListener {
-            //usuniecie wszystkiego z SQLa zwiazanego z tym taskiem
             if(adapter!=null&&list!=null){
                 var choosenGoal:Int=list.checkedItemPosition
                 if(choosenGoal!=null) {
