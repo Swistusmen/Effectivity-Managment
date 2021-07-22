@@ -39,6 +39,7 @@ class goals : AppCompatActivity() {
                 Goals.add(nextText)
                 list.adapter=adapter
                 adapter.notifyDataSetChanged()
+                dbHandler.AddNewGoal("Description",nextText)
             }
             input.text.clear()
         }
@@ -68,6 +69,7 @@ class goals : AppCompatActivity() {
                         adapter.remove(Goals.get(choosenGoal))
                         adapter.notifyDataSetChanged()
                         dbHandler.deleteGoalSteps(goal)
+                        dbHandler.deleteGoal(goal)
                     }
                 }
             }
@@ -80,27 +82,17 @@ class goals : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        SaveGoals()
+        //SaveGoals()
     }
 
     fun ReadGoals(){
-        var path=this.getExternalFilesDir(null)
-        var file=File(path,fileName)
-        if(file.exists()){
-            var fileInput:FileInputStream?=null
-            fileInput=openFileInput(fileName)
-            var inputStreamReader:InputStreamReader= InputStreamReader(fileInput)
-            var bufferedReader:BufferedReader=BufferedReader(inputStreamReader)
-            var builder:StringBuilder=StringBuilder()
-            var newGoal:String?=null
-            while({newGoal=bufferedReader.readLine();newGoal}()!=null){
-                builder.append(newGoal)
-                Goals.add(builder.toString())
-                builder.clear()
-            }
+        var GoalsDAO=dbHandler.readGoals()
+        for(i in GoalsDAO){
+            if(i.finished==false)
+                Goals.add(i.parent)
         }
     }
-
+/*
     fun SaveGoals(){
         var path=this.getExternalFilesDir(null)
         var file= File(path,fileName)
@@ -116,7 +108,7 @@ class goals : AppCompatActivity() {
         }
         fileOutput.close()
     }
-
+*/
     fun CheckIfGoalExists(GoalTitle:String):Boolean{
         for(i in Goals){
             if (i==GoalTitle){

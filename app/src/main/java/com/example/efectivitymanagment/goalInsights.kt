@@ -11,6 +11,7 @@ class goalInsights : AppCompatActivity() {
     var Steps= arrayListOf<String>()
     var Steps2= arrayListOf<Step>()
     var StepsFinished= arrayListOf<String>()
+    var Description="Here put your description"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,8 @@ class goalInsights : AppCompatActivity() {
         var input=findViewById<EditText>(R.id.giStep)
         var list=findViewById<ListView>(R.id.giStepsList)
         var finishedSteps=findViewById<ListView>(R.id.giDoneSteps)
+        var acomplish=findViewById<Button>(R.id.giAccomplish)
+        var modify=findViewById<Button>(R.id.giModify)
 
         var parentGoal:String?=null
         var bundle=intent.extras
@@ -32,8 +35,6 @@ class goalInsights : AppCompatActivity() {
             if(parentGoal==null)
                 parentGoal="Dupa"
         }
-
-        title.text=parentGoal
 
         var adapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,Steps)
         var adapter2=ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,StepsFinished)
@@ -45,6 +46,8 @@ class goalInsights : AppCompatActivity() {
             finishedSteps.adapter=adapter2
             adapter2.notifyDataSetChanged()
         }
+        desc.setText(Description)
+        title.text=parentGoal
 
         create.setOnClickListener {
             var newStep=input.text.toString()
@@ -90,6 +93,16 @@ class goalInsights : AppCompatActivity() {
             adapter.notifyDataSetChanged()
             adapter2.notifyDataSetChanged()
         }
+
+        acomplish.setOnClickListener {
+            if(Steps.count()==0 && Steps2.count()>0){
+                dbHandler.markGoalAsDone(parentGoal)
+            }
+        }
+
+        modify.setOnClickListener {
+            dbHandler.saveDescription(parentGoal,desc.text.toString())
+        }
     }
 
     private fun ReadStepsFromDB(parent: String){
@@ -100,6 +113,7 @@ class goalInsights : AppCompatActivity() {
             else
                 StepsFinished.add(i.desc)
         }
+        Description=dbHandler.readGoalDescription(parent)
     }
 
 
