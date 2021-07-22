@@ -41,7 +41,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values= new ContentValues();
         values.put(ThirdColumn,description);
         values.put(SecondColumn,parent);
-        values.put(FourthColumn,"0");
+        values.put(FourthColumn,"FALSE");
 
         db.insert(TableName,null,values);
         db.close();
@@ -87,7 +87,7 @@ public class DBHandler extends SQLiteOpenHelper {
                ContentValues values=new ContentValues();
                values.put(ThirdColumn,cursor.getString(2));
                values.put(SecondColumn,cursor.getString(1));
-               values.put(FourthColumn,"1");
+               values.put(FourthColumn,"TRUE");
                values.put(FirstColumn,cursor.getString(0));
                write.update(TableName,values,"Description=?", new String[]{step});
            }while(cursor.moveToNext());
