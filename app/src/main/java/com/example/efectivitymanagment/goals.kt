@@ -46,13 +46,15 @@ class goals : AppCompatActivity() {
         selectButton.setOnClickListener {
             if(adapter!=null&&list!=null){
                 var choosedAction: Int=list.checkedItemPosition
-                var GoalToOpen:String=Goals[choosedAction]
-                if(CheckIfGoalExists(GoalToOpen)){
-                var intent=Intent(this,goalInsights::class.java)
-                    var bundle=Bundle()
-                    bundle.putString("Goal",GoalToOpen)
-                intent.putExtras(bundle)
-                startActivity(intent)
+                if(choosedAction!=-1) {
+                    var GoalToOpen: String = Goals[choosedAction]
+                    if (CheckIfGoalExists(GoalToOpen)) {
+                        var intent = Intent(this, goalInsights::class.java)
+                        var bundle = Bundle()
+                        bundle.putString("Goal", GoalToOpen)
+                        intent.putExtras(bundle)
+                        startActivity(intent)
+                    }
                 }
             }
         }
@@ -60,11 +62,13 @@ class goals : AppCompatActivity() {
         deleteButton.setOnClickListener {
             if(adapter!=null&&list!=null){
                 var choosenGoal:Int=list.checkedItemPosition
-                if(choosenGoal!=null) {
-                    val goal=Goals.get(choosenGoal)
-                    adapter.remove(Goals.get(choosenGoal))
-                    adapter.notifyDataSetChanged()
-                    dbHandler.deleteGoalSteps(goal)
+                if(choosenGoal!=-1) {
+                    if (choosenGoal != null) {
+                        val goal = Goals.get(choosenGoal)
+                        adapter.remove(Goals.get(choosenGoal))
+                        adapter.notifyDataSetChanged()
+                        dbHandler.deleteGoalSteps(goal)
+                    }
                 }
             }
         }

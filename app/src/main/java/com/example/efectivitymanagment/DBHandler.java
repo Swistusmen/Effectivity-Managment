@@ -55,11 +55,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()){
             do{
-                String a=cursor.getString(1);
-                String a1=cursor.getString(2);
-                String a2=cursor.getString(3);
                 stepList.add(new Step(cursor.getString(2),
-                        cursor.getString(1),cursor.getString(3)));
+                        cursor.getString(1),cursor.getString(3),cursor.getString(0)));
             }while(cursor.moveToNext()); //tutaj
         }
         cursor.close();
