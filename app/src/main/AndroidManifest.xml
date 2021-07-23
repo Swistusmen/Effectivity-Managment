@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EfectivityManagment">
-        <activity android:name=".goalInsights"></activity>
+        <activity android:name=".progress"></activity>
+        <activity android:name=".goalInsights" />
         <activity android:name=".eisFullView" />
         <activity android:name=".toDoList" />
         <activity android:name=".goals" />

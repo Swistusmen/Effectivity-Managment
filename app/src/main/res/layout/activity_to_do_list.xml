@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/white">
+    android:background="@color/mint">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,10 +43,10 @@
             android:id="@+id/todoDone"
             android:layout_margin="5dp"/>
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/todoInput"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
     </LinearLayout>
     <ListView
         android:layout_width="wrap_content"

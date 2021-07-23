@@ -23,13 +23,10 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String ThirdColumn="Description";
     private static final String FourthColumn="IsDone";
 
-
-
     public DBHandler(Context context){
         super(context, DB_Name,null,DB_Version);
     }
 
-    //create Database
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query="CREATE TABLE "+GoalsTable+ " ("+
@@ -119,10 +116,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public String readGoalDescription(String goal){
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("Select Description from "+GoalsTable+" where (Goal=\""+goal+"\"",null);
+        Cursor cursor=db.rawQuery("Select * from "+GoalsTable+" where (Goal=\""+goal+"\");",null);
         String desc="";
         if(cursor.moveToFirst()){
-            desc=cursor.getString(0);
+            desc=cursor.getString(2);
         }
         return desc;
     }
@@ -187,6 +184,32 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         write.close();
         cursor.close();
+    }
+
+    public int GetCountOfSteps(String parent){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String query="SELECT COUNT("+SecondColumn+") FROM "+TableName+" WHERE "+
+                SecondColumn+"= \""+parent+"\";";
+        Cursor cursor= db.rawQuery(query,null);
+        int count=0;
+        if(cursor.moveToFirst()){
+            count=cursor.getInt(0);
+        }
+        cursor.close();
+        return count;
+    }
+
+    public int GetCountOfFinishedSteps(String parent){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String query="SELECT COUNT("+SecondColumn+") FROM "+TableName+" WHERE "+
+                SecondColumn+"= \""+parent+"\" AND "+FourthColumn+"=\"TRUE\";";
+        Cursor cursor= db.rawQuery(query,null);
+        int count=0;
+        if(cursor.moveToFirst()){
+            count=cursor.getInt(0);
+        }
+        cursor.close();
+        return count;
     }
 
     @Override

@@ -19,39 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         val eisenhowerButton= findViewById<Button>(R.id.eisenhowerButton)
         val toDoButton=findViewById<Button>(R.id.toDoButton)
-        //val calendarButton=findViewById<Button>(R.id.calendarButton)
         val goalsButton=findViewById<Button>(R.id.goalsButton)
-        /*
-        var myList = arrayListOf<String>()
-
-        var path=this.getExternalFilesDir(null)
-        val filename: String= "EisenhowerMaritx"
-        var fileNameInput: FileInputStream?= null
-        var file:File=File(path,filename)
-        if(file.exists()) {
-            fileNameInput = openFileInput(filename)
-            var reader: InputStreamReader = InputStreamReader(fileNameInput)
-            var bufferedReader: BufferedReader = BufferedReader(reader)
-            var builder: StringBuilder = StringBuilder()
-            var text: String? = null
-            while ({ text = bufferedReader.readLine();text }() != null) {
-                builder.append(text)
-                myList.add(builder.toString())
-                builder.clear()
-            }
-        }
-
-        if(myList.count()>0) {
-            var displayer = findViewById<ListView>(R.id.displayList)
-            var adapter = ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_multiple_choice,
-                myList
-            )
-            displayer.adapter = adapter
-            adapter.notifyDataSetChanged()
-        }
-        */
+        val progressButton=findViewById<Button>(R.id.progressButton)
 
         eisenhowerButton.setOnClickListener{
             val eisenHowerActivity= Intent(this, eis::class.java)
@@ -68,8 +37,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(todoActivity)
         }
 
-
-
+        progressButton.setOnClickListener {
+            val todoActivity=Intent(this,progress::class.java)
+            startActivity(todoActivity)
+        }
     }
 
 

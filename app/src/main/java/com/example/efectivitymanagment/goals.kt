@@ -92,23 +92,7 @@ class goals : AppCompatActivity() {
                 Goals.add(i.parent)
         }
     }
-/*
-    fun SaveGoals(){
-        var path=this.getExternalFilesDir(null)
-        var file= File(path,fileName)
-        if(file.exists()){
-            file.delete()
-        }
-        file.createNewFile()
-        var fileOutput:FileOutputStream?=null
-        fileOutput=openFileOutput(fileName, Context.MODE_PRIVATE)
-        for(i in Goals){
-            fileOutput.write(i.toByteArray())
-            fileOutput.write(lineSeparator.toByteArray())
-        }
-        fileOutput.close()
-    }
-*/
+
     fun CheckIfGoalExists(GoalTitle:String):Boolean{
         for(i in Goals){
             if (i==GoalTitle){

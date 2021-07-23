@@ -15,17 +15,17 @@
         android:text="Effectivity Managment"
         android:textColor="@color/black"
         android:textSize="26dp"
-        android:layout_row="1"
-        android:layout_column="0"
         android:background="@color/teal_700"/>
-    <GridLayout
-        android:id="@+id/grid_layout"
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_below="@id/textView"
+     android:orientation="vertical"
+     android:weightSum="1">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:columnCount="2"
-        android:rowCount="2">
-
+        android:orientation="horizontal">
         <Button
             android:id="@+id/eisenhowerButton"
             android:layout_row="0"
@@ -33,7 +33,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:text="Eisenhower Matrix"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"/>
         <Button
             android:id="@+id/toDoButton"
@@ -43,15 +43,20 @@
             android:layout_height="150dp"
             android:text="ToDo List"
             android:layout_marginTop="28dp"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
-            android:id="@+id/calendarButton"
+            android:id="@+id/progressButton"
             android:layout_row="1"
             android:layout_column="0"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="Calendar"
-            android:layout_marginLeft="30dp"
+            android:text="Progress"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp" />
 
         <Button
@@ -61,7 +66,15 @@
             android:layout_row="1"
             android:layout_column="1"
             android:layout_marginTop="22dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
             android:text="Goals" />
-    </GridLayout>
+    </LinearLayout>
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="Synchronize"
+         android:id="@+id/syncButton"
+         android:layout_marginLeft="10dp"
+         android:layout_marginRight="10dp"/>
+ </LinearLayout>
 </RelativeLayout>
