@@ -1,13 +1,19 @@
 package com.example.efectivitymanagment
 
+import SyncResponse
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import okhttp3.HttpUrl
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.HTTP
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream
@@ -47,11 +53,26 @@ class MainActivity : AppCompatActivity() {
 
         syncButton.setOnClickListener {
             val retrofit= Retrofit.Builder()
-                .baseUrl("127.0.0.1:8000/").
+                .baseUrl("http://192.168.0.143:8080").
                 addConverterFactory(GsonConverterFactory.create()).build()
             val service=retrofit.create(SyncService::class.java)
             val call=service.hello()
-            syncButton.text=call.welcomeMessage
+            call.enqueue(object: Callback<SyncResponse>{
+                override fun onResponse(
+                    call: Call<SyncResponse>?,
+                    response: Response<SyncResponse>?
+                ) {
+                    if(response!=null)
+                    if(response.code()==200){
+                        val body=response.body()
+                        syncButton.text=body.welcomeMessage
+                    }
+                }
+
+                override fun onFailure(call: Call<SyncResponse>?, t: Throwable?) {
+                    syncButton.text="nie udalo sie"
+                }
+            })
         }
     }
 
